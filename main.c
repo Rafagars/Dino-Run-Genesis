@@ -27,7 +27,6 @@ int main()
 
     SPR_init(0, 0, 0);
     player.sprite = SPR_addSprite(&dino, player.x, player.y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
-    SPR_setAnim(player.sprite, ANIM_RUN);
     obstacle.sprite = SPR_addSprite(&cactus, obstacle.x, obstacle.y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
 
     // init SFX

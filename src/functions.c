@@ -71,7 +71,7 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
             if(jumping == FALSE){
                 jumping = TRUE;
                 player.vel_y = FIX16(-4);
-                SPR_setAnim(player.sprite, ANIM_JUMP);
+                //SPR_setAnim(player.sprite, ANIM_JUMP);
                 SND_startPlayPCM_XGM(SFX_JUMP, 1, SOUND_PCM_CH2);
             }
         }
