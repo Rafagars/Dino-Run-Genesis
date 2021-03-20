@@ -37,7 +37,6 @@ void startGame(){
     VDP_drawText(label_score, 1, 1);
     score = 0;
     updateScoreDisplay();
-    obstacle.x = 320;
 }
 
 void pauseGame(){

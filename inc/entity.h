@@ -4,8 +4,6 @@
 #include <genesis.h>
 
 #define MAX_ENEMIES 3
-#define ANIM_RUN    0
-#define ANIM_JUMP   2
 
 typedef struct {
     int x;
@@ -19,6 +17,6 @@ typedef struct {
 } Entity;
 
 extern Entity player;
-extern Entity obstacle;
+extern Entity obstacles[MAX_ENEMIES];
 
 #endif
