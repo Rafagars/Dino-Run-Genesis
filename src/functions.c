@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "gameStates.h"
 
 // The edges of the play field
 const int LEFT_EDGE = 0;
@@ -34,7 +35,8 @@ void clearText(){
 void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
-        clearText();
+        VDP_clearTextAreaBG(BG_A, 0, 0, 32, 24);
+        playState();
     }
     VDP_drawText(label_score, 1, 1);
     score = 0;

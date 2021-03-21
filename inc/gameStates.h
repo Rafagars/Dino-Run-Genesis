@@ -5,6 +5,9 @@
 #include "functions.h"
 
 extern int i;
+extern u16 index;
+
+extern void titleState();
 
 extern void playState();
 
