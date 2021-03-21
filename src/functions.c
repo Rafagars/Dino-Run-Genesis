@@ -39,6 +39,9 @@ void startGame(){
     VDP_drawText(label_score, 1, 1);
     score = 0;
     updateScoreDisplay();
+    for(int i = 0; i < MAX_ENEMIES; i++){
+        obstacles[i].x = 320 + randomize(200);
+    }
 }
 
 void pauseGame(){
@@ -97,9 +100,6 @@ void moveObstacles(){
                         score_added = TRUE;
                     }
                 }
-        }
-        if(game_on == FALSE){
-            obstacles[i].x = 320 + randomize(200);
         }
         SPR_setPosition(obstacles[i].sprite, obstacles[i].x, fix16ToInt(obstacles[i].y));
     }

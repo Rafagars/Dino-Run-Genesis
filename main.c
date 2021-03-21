@@ -48,15 +48,17 @@ int main()
     int offset = 0;
     while(1)
     {
-        VDP_setHorizontalScroll(BG_B, offset -= scrollspeed);
-        // To avoid possible overflow
-        if(offset <= -256){
-            offset = 0;
-        }
-
         if(game_on == TRUE){
+            // Scroll Background
+            VDP_setHorizontalScroll(BG_B, offset -= scrollspeed);
+            // To avoid possible overflow
+            if(offset <= -256){
+                offset = 0;
+            }
+
             //Apply velocity
             player.y = fix16Add(player.y, player.vel_y);
+
             //Apply gravity
             if(jumping == TRUE){
                 player.vel_y = fix16Add(player.vel_y, gravity);
@@ -67,6 +69,7 @@ int main()
                 player.y = intToFix16(floor_height - player.h);
                 score_added = FALSE;
             }
+            
             moveObstacles();
         }
         SPR_setPosition(player.sprite, player.x, fix16ToInt(player.y));
