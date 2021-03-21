@@ -27,13 +27,12 @@ int main()
 
     SPR_init(0, 0, 0);
     player.sprite = SPR_addSprite(&dino, player.x, player.y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
-    //obstacle.sprite = SPR_addSprite(&cactus, obstacle.x, obstacle.y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
 
     // Create all obstacles sprites
     Entity* obs = obstacles;
 
     for(i = 0; i < MAX_ENEMIES; i++){
-        obs->x = 320 + randomize(150);
+        obs->x = 320 + randomize(200);
         obs->y = FIX16(145);
         obs->w = 16;
         obs->h = 16;
@@ -71,7 +70,6 @@ int main()
             moveObstacles();
         }
         SPR_setPosition(player.sprite, player.x, fix16ToInt(player.y));
-        //SPR_setPosition(obstacle.sprite, obstacle.x, fix16ToInt(obstacle.y));
         SPR_update();
         SYS_doVBlankProcess();
     }

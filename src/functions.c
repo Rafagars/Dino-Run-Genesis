@@ -68,7 +68,7 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
                 pauseGame();
             }
         }
-        if( state & BUTTON_A){
+        if( state & (BUTTON_A | BUTTON_UP) ){
             if(jumping == FALSE){
                 jumping = TRUE;
                 player.vel_y = FIX16(-4);
@@ -85,7 +85,7 @@ void moveObstacles(){
         obstacles[i].vel_x = -scrollspeed;
         obstacles[i].x += obstacles[i].vel_x;
         if(obstacles[i].x < -8){
-            obstacles[i].x = 320 + randomize(150);
+            obstacles[i].x = 320 + randomize(200);
         }
         if(player.x < obstacles[i].x + 16 && player.x + 16 > obstacles[i].x){
                 if(jumping == FALSE){
@@ -99,7 +99,7 @@ void moveObstacles(){
                 }
         }
         if(game_on == FALSE){
-            obstacles[i].x = 320 + randomize(150);
+            obstacles[i].x = 320 + randomize(200);
         }
         SPR_setPosition(obstacles[i].sprite, obstacles[i].x, fix16ToInt(obstacles[i].y));
     }
