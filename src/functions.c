@@ -19,7 +19,7 @@ bool score_added = FALSE;
 
 // General stuff
 const char msg_start[22] = "Press START to Begin!";
-const char msg_reset[22] = "GAME OVER";
+const char msg_reset[22] = "GAME OVER\tPress START";
 const char msg_pause[8] = "PAUSED";
 bool game_on = FALSE;
 

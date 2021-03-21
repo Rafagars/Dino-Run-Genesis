@@ -17,4 +17,5 @@ out/main.o: main.c /home/rafagars/SGDK/inc/genesis.h \
  /home/rafagars/SGDK/inc/psg.h /home/rafagars/SGDK/inc/joy.h \
  /home/rafagars/SGDK/inc/timer.h inc/functions.h \
  /home/rafagars/SGDK/inc/maths.h res/resources.h \
- /home/rafagars/SGDK/inc/string.h inc/entity.h
+ /home/rafagars/SGDK/inc/string.h inc/entity.h inc/gameStates.h \
+ inc/functions.h
