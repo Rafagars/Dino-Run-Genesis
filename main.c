@@ -1,7 +1,6 @@
 #include <genesis.h>
 #include "functions.h"
 
-const int scrollspeed = 2;
 int i;
 
 int main()
@@ -34,7 +33,7 @@ int main()
     Entity* obs = obstacles;
 
     for(i = 0; i < MAX_ENEMIES; i++){
-        obs->x = randomize(100) + 220;
+        obs->x = 320 + randomize(150);
         obs->y = FIX16(145);
         obs->w = 16;
         obs->h = 16;
@@ -55,27 +54,6 @@ int main()
         if(offset <= -256){
             offset = 0;
         }
-        for(i = 0; i < MAX_ENEMIES; i++){
-            //Move the obstacle
-            obstacles[i].vel_x = -scrollspeed;
-            obstacles[i].x += obstacles[i].vel_x;
-            if(obstacles[i].x < -8){
-                obstacles[i].x = randomize(100) + 220;
-            }
-            if(player.x < obstacles[i].x + 16 && player.x + 16 > obstacles[i].x){
-                    if(jumping == FALSE){
-                        endGame();
-                    } else {
-                        if(score_added == FALSE){
-                            score++;
-                            updateScoreDisplay();
-                            score_added = TRUE;
-                        }
-                    }
-            }
-        }
-
-
 
         if(game_on == TRUE){
             //Apply velocity
@@ -90,12 +68,10 @@ int main()
                 player.y = intToFix16(floor_height - player.h);
                 score_added = FALSE;
             }
+            moveObstacles();
         }
         SPR_setPosition(player.sprite, player.x, fix16ToInt(player.y));
         //SPR_setPosition(obstacle.sprite, obstacle.x, fix16ToInt(obstacle.y));
-        for(i = 0; i < MAX_ENEMIES; i++){
-            SPR_setPosition(obstacles[i].sprite, obstacles[i].x, fix16ToInt(obstacles[i].y));
-        }
         SPR_update();
         SYS_doVBlankProcess();
     }
