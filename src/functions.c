@@ -6,6 +6,8 @@ const int RIGHT_EDGE = 320;
 const int TOP_EDGE = 0;
 const int BOTTOM_EDGE = 165;
 
+const int scrollspeed = 2;
+
 const int floor_height = 160;
 fix16 gravity = FIX16(0.2);
 bool jumping = FALSE;
@@ -37,7 +39,6 @@ void startGame(){
     VDP_drawText(label_score, 1, 1);
     score = 0;
     updateScoreDisplay();
-    obstacle.x = 320;
 }
 
 void pauseGame(){
@@ -75,6 +76,32 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
                 SND_startPlayPCM_XGM(SFX_JUMP, 1, SOUND_PCM_CH2);
             }
         }
+    }
+}
+
+void moveObstacles(){
+    for(int i = 0; i < MAX_ENEMIES; i++){
+        //Move the obstacle
+        obstacles[i].vel_x = -scrollspeed;
+        obstacles[i].x += obstacles[i].vel_x;
+        if(obstacles[i].x < -8){
+            obstacles[i].x = 320 + randomize(150);
+        }
+        if(player.x < obstacles[i].x + 16 && player.x + 16 > obstacles[i].x){
+                if(jumping == FALSE){
+                    endGame();
+                } else {
+                    if(score_added == FALSE){
+                        score++;
+                        updateScoreDisplay();
+                        score_added = TRUE;
+                    }
+                }
+        }
+        if(game_on == FALSE){
+            obstacles[i].x = 320 + randomize(150);
+        }
+        SPR_setPosition(obstacles[i].sprite, obstacles[i].x, fix16ToInt(obstacles[i].y));
     }
 }
 

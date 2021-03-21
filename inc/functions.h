@@ -10,6 +10,8 @@
 #define SFX_JUMP 64
 #define SFX_DIE  65
 
+extern const int scrollspeed;
+
 extern const int floor_height;
 extern fix16 gravity;
 extern bool jumping;
@@ -32,6 +34,8 @@ extern void pauseGame();
 extern void endGame();
 
 extern void myJoyHandler( u16 joy, u16 changed, u16 state);
+
+extern void moveObstacles();
 
 extern void updateScoreDisplay();
 

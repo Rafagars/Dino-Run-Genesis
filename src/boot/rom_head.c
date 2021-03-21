@@ -8,8 +8,8 @@ const ROMHeader rom_header = {
     "SEGA MEGA DRIVE ",
 #endif
     "(C)SGDK 2020    ",
-    "SAMPLE PROGRAM                                  ",
-    "SAMPLE PROGRAM                                  ",
+    "DINO RUNNER GENESIS                                 ",
+    "DINO RUNNER GENESIS                               ",
     "GM 00000000-00",
     0x0000,
     "JD              ",
