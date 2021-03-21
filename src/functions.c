@@ -35,8 +35,7 @@ void clearText(){
 void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
-        VDP_clearTextAreaBG(BG_A, 0, 0, 32, 24);
-        playState();
+        clearText();
     }
     VDP_drawText(label_score, 1, 1);
     score = 0;
@@ -68,6 +67,8 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
         if(state & BUTTON_START){
             if(game_on == FALSE){
                 startGame();
+                VDP_clearTextAreaBG(BG_A, 0, 0, 32, 24);
+                playState();
             } else if(game_on == TRUE){
                 game_on = FALSE;
                 pauseGame();
