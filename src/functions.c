@@ -36,6 +36,7 @@ void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
         clearText();
+        player.x = 10;
     }
     VDP_drawText(label_score, 1, 1);
     score = 0;

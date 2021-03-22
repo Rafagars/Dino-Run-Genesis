@@ -41,6 +41,5 @@ void playState(){
     
 
     VDP_fillTileMapRect(BG_B, TILE_ATTR_FULL(PAL0, 1, FALSE, FALSE, 1), 0, 20, 32, 14);
-    
 
 }

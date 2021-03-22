@@ -16,8 +16,6 @@ int main()
 
     titleState();
 
-    //playState();
-
     SPR_init(0, 0, 0);
     player.sprite = SPR_addSprite(&dino, player.x, player.y, TILE_ATTR(PAL0, 1, FALSE, FALSE));
 
@@ -25,7 +23,7 @@ int main()
     Entity* obs = obstacles;
 
     for(i = 0; i < MAX_ENEMIES; i++){
-        obs->x = 320 + randomize(200);
+        obs->x = 350;
         obs->y = FIX16(145);
         obs->w = 16;
         obs->h = 16;
