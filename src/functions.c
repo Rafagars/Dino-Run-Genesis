@@ -55,7 +55,7 @@ void pauseGame(){
 
 void endGame(){
     if(game_on == TRUE){
-        SND_startPlayPCM_XGM(SFX_DIE, 1, SOUND_PCM_CH2);
+        XGM_startPlayPCM(SFX_DIE, 1, SOUND_PCM_CH2);
         showText(msg_reset);
         game_on = FALSE;
     }
@@ -79,7 +79,7 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
                 jumping = TRUE;
                 player.vel_y = FIX16(-4);
                 //SPR_setAnim(player.sprite, ANIM_JUMP);
-                SND_startPlayPCM_XGM(SFX_JUMP, 1, SOUND_PCM_CH2);
+                XGM_startPlayPCM(SFX_JUMP, 1, SOUND_PCM_CH2);
             }
         }
     }
