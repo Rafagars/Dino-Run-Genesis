@@ -25,11 +25,11 @@ const char msg_pause[8] = "PAUSED";
 bool game_on = FALSE;
 
 void showText(char s[]){
-    VDP_drawText(s, 20 - strlen(s)/2, 10);
+    VDP_drawText(s, 20 - strlen(s)/2, 1);
 }
 
 void clearText(){
-    VDP_clearText(0, 10, 32);
+    VDP_clearText(0, 1, 32);
 }
 
 void startGame(){
@@ -38,7 +38,7 @@ void startGame(){
         clearText();
         player.x = 10;
     }
-    VDP_drawText(label_score, 1, 1);
+    VDP_drawText(label_score, 1, 0);
     score = 0;
     updateScoreDisplay();
     for(int i = 0; i < MAX_ENEMIES; i++){
@@ -111,8 +111,8 @@ void moveObstacles(){
 
 void updateScoreDisplay(){
     sprintf(str_score, "%d", score);
-    VDP_clearText(1, 2, 3);
-    VDP_drawText(str_score, 1, 2);
+    VDP_clearText(0, 1, 3);
+    VDP_drawText(str_score, 1, 1);
 }
 
 u16 randomize(u16 n){

@@ -4,6 +4,9 @@ int i;
 u16 index;
 
 void titleState(){
+
+    VDP_setTextPlane(BG_B);
+
     index = TILE_USERINDEX;
 
     VDP_setPalette(PAL1, title.palette->data);
@@ -17,29 +20,32 @@ void titleState(){
     index += title.tileset->numTile;
  
 
-    //VDP_drawText(msg_start, 20 - strlen(msg_start)/2, 23);
+    VDP_drawText(msg_start, 20 - strlen(msg_start)/2, 23);
 }
 
 void playState(){
 
-    // Draw score text 
-    VDP_drawText(label_score, 1, 1);
-    VDP_drawText(str_score, 1, 2);
+    VDP_setTextPlane(WINDOW);
+    VDP_setWindowVPos(FALSE, 2);
+    
+    //Draw score text 
+    VDP_drawText(label_score, 1, 0);
+    VDP_drawText(str_score, 1, 1);
 
     index = TILE_USERINDEX;
 
     VDP_setPalette(PAL0, bg_a.palette->data);
-    VDP_setPalette(PAL1, grass.palette->data);
+    //VDP_setPalette(PAL1, grass.palette->data);
 
-    VDP_drawImageEx(BG_B, &bg_a, TILE_ATTR_FULL(PAL0, 0, FALSE, FALSE, index), 0, 0, TRUE, DMA);
-
+    VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL0, 0, FALSE, FALSE, index), 0, 0, TRUE, DMA);
+    
     index += bg_a.tileset->numTile;
+
 
     VDP_setScrollingMode(HSCROLL_PLANE, VSCROLL_PLANE);
 
-    VDP_loadTileSet(grass.tileset, 1, DMA);
-    
+    //VDP_loadTileSet(grass.tileset, 1, DMA);
+    //VDP_fillTileMapRect(BG_B, TILE_ATTR_FULL(PAL0, 1, FALSE, FALSE, 1), 0, 20, 32, 14);
 
-    VDP_fillTileMapRect(BG_B, TILE_ATTR_FULL(PAL0, 1, FALSE, FALSE, 1), 0, 20, 32, 14);
-
+    VDP_drawImageEx(BG_B, &bg_b, TILE_ATTR_FULL(PAL0, 1 ,FALSE, FALSE, index), 0, 0, FALSE, DMA);
 }
