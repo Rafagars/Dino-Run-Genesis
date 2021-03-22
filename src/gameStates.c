@@ -35,17 +35,13 @@ void playState(){
     index = TILE_USERINDEX;
 
     VDP_setPalette(PAL0, bg_a.palette->data);
-    //VDP_setPalette(PAL1, grass.palette->data);
 
-    VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL0, 0, FALSE, FALSE, index), 0, 0, TRUE, DMA);
+    VDP_drawImageEx(BG_A, &bg_a, TILE_ATTR_FULL(PAL0, 0, FALSE, FALSE, index), 22, 0, TRUE, DMA);
     
     index += bg_a.tileset->numTile;
 
 
     VDP_setScrollingMode(HSCROLL_PLANE, VSCROLL_PLANE);
-
-    //VDP_loadTileSet(grass.tileset, 1, DMA);
-    //VDP_fillTileMapRect(BG_B, TILE_ATTR_FULL(PAL0, 1, FALSE, FALSE, 1), 0, 20, 32, 14);
 
     VDP_drawImageEx(BG_B, &bg_b, TILE_ATTR_FULL(PAL0, 1 ,FALSE, FALSE, index), 0, 0, FALSE, DMA);
 }
