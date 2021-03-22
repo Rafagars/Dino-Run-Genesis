@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity player = {10, FIX16(145), 16, 16, 0, FIX16(0), NULL, "PLAYER"};
+Entity player = {400, FIX16(145), 16, 16, 0, FIX16(0), NULL, "PLAYER"};
 
 Entity obstacles[MAX_ENEMIES];
 

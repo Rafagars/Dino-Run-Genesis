@@ -17,4 +17,5 @@ out/src/functions.o: src/functions.c inc/functions.h \
  /home/rafagars/SGDK/inc/ym2612.h /home/rafagars/SGDK/inc/psg.h \
  /home/rafagars/SGDK/inc/joy.h /home/rafagars/SGDK/inc/timer.h \
  /home/rafagars/SGDK/inc/maths.h res/resources.h \
- /home/rafagars/SGDK/inc/string.h inc/entity.h
+ /home/rafagars/SGDK/inc/string.h inc/entity.h inc/gameStates.h \
+ inc/functions.h

@@ -6,7 +6,7 @@ extern const u8 die_sfx[12800];
 extern const SpriteDefinition dino;
 extern const SpriteDefinition cactus;
 extern const Image grass;
-extern const Image cloud;
 extern const Image bg_a;
+extern const Image title;
 
 #endif // _RES_RESOURCES_H_
