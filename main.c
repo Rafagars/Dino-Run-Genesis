@@ -59,6 +59,7 @@ int main()
             }
             
             moveObstacles();
+            
         }
         SPR_setPosition(player.sprite, player.x, fix16ToInt(player.y));
         SPR_update();

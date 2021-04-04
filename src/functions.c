@@ -87,12 +87,16 @@ void myJoyHandler( u16 joy, u16 changed, u16 state){
 }
 
 void moveObstacles(){
+
     for(int i = 0; i < MAX_ENEMIES; i++){
         //Move the obstacle
         obstacles[i].vel_x = -scrollspeed;
         obstacles[i].x += obstacles[i].vel_x;
         if(obstacles[i].x < -8){
             obstacles[i].x = 320 + randomize(200);
+            if (obstacles[i].x - obstacles[i-1].x < 12){
+                obstacles[i].x += 16;
+            } 
         }
         if(player.x < obstacles[i].x + 16 && player.x + 16 > obstacles[i].x){
                 if(jumping == FALSE){
@@ -107,6 +111,7 @@ void moveObstacles(){
         }
         SPR_setPosition(obstacles[i].sprite, obstacles[i].x, fix16ToInt(obstacles[i].y));
     }
+
 }
 
 void updateScoreDisplay(){
