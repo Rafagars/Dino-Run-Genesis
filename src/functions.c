@@ -64,7 +64,7 @@ void endGame(){
 
 void myJoyHandler( u16 joy, u16 changed, u16 state){
     if(joy == JOY_1){
-        //Start the game if START if pressed or Pause the game
+        //Start the game or paused if START is pressed 
         if(state & BUTTON_START){
             if(game_on == FALSE){
                 startGame();

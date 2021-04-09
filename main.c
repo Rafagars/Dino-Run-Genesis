@@ -33,17 +33,21 @@ int main()
         Entity* obs = &obstacles[i];
     }
 
-    int offset = 0;
+    fix16 offsetA = FIX16(0);
+    int offsetB = 0;
     while(1)
     {
         if(game_on == TRUE){
             // Scroll Background
-            VDP_setHorizontalScroll(BG_B, offset -= scrollspeed);
+            VDP_setHorizontalScroll(BG_A, offsetA = fix16Add(offsetA, -1.5));
+            VDP_setHorizontalScroll(BG_B, offsetB -= scrollspeed);
             // To avoid possible overflow
-            if(offset <= -256){
-                offset = 0;
+            if(offsetA <= FIX16(-256)){
+                offsetA = FIX16(0);
             }
-
+            if(offsetB <= -256){
+                offsetB = 0;
+            }
             //Apply velocity
             player.y = fix16Add(player.y, player.vel_y);
 
