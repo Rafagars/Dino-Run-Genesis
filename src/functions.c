@@ -98,10 +98,13 @@ void moveObstacles(){
                 obstacles[i].x += 16;
             } 
         }
+        //Collisions
         if(player.x < obstacles[i].x + 16 && player.x + 16 > obstacles[i].x){
                 if(jumping == FALSE){
+                    //Game Over the player collided with an obstacle
                     endGame();
                 } else {
+                    //Player avoided the obstacle
                     if(score_added == FALSE){
                         score++;
                         updateScoreDisplay();

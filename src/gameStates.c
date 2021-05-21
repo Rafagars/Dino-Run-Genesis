@@ -3,8 +3,9 @@
 int i;
 u16 index;
 
+//Backgrounds for the Title Screen
 void titleState(){
-
+    
     VDP_setTextPlane(BG_B);
 
     index = TILE_USERINDEX;
@@ -23,8 +24,9 @@ void titleState(){
     VDP_drawText(msg_start, 20 - strlen(msg_start)/2, 23);
 }
 
+//Backgrounds, window layer and scroll mode for the level
 void playState(){
-
+    
     VDP_setTextPlane(WINDOW);
     VDP_setWindowVPos(FALSE, 2);
     

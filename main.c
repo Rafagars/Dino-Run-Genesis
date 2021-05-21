@@ -2,8 +2,7 @@
 #include "functions.h"
 #include "gameStates.h"
 
-int main()
-{   
+int main(){   
     // Input
     JOY_init();
     JOY_setEventHandler( &myJoyHandler );
