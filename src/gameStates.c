@@ -6,6 +6,8 @@ u16 index;
 //Backgrounds for the Title Screen
 void titleState(){
     
+    onTitle = TRUE;
+
     VDP_setTextPlane(BG_B);
 
     index = TILE_USERINDEX;
@@ -27,6 +29,8 @@ void titleState(){
 //Backgrounds, window layer and scroll mode for the level
 void playState(){
     
+    onTitle = FALSE;
+
     VDP_setTextPlane(WINDOW);
     VDP_setWindowVPos(FALSE, 2);
     
@@ -46,4 +50,8 @@ void playState(){
     VDP_setScrollingMode(HSCROLL_PLANE, VSCROLL_PLANE);
 
     VDP_drawImageEx(BG_B, &bg_b, TILE_ATTR_FULL(PAL0, 1 ,FALSE, FALSE, index), 0, 0, FALSE, DMA);
+
+    for(int i = 0; i < MAX_ENEMIES; i++){
+        obstacles[i].x = 320 + randomize(200);
+    }
 }

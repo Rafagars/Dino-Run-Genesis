@@ -1,6 +1,8 @@
 #include "functions.h"
 #include "gameStates.h"
 
+bool onTitle;
+
 // The edges of the play field
 const int LEFT_EDGE = 0;
 const int RIGHT_EDGE = 320;
@@ -39,18 +41,13 @@ void startGame(){
         player.x = 10;
     }
     VDP_drawText(label_score, 1, 0);
-    score = 0;
     updateScoreDisplay();
-    for(int i = 0; i < MAX_ENEMIES; i++){
-        obstacles[i].x = 320 + randomize(200);
-    }
 }
 
 void pauseGame(){
-    if(game_on == FALSE){
+    if(game_on == TRUE){
         showText(msg_pause);
-    } else {
-        game_on = TRUE;
+        game_on = FALSE;
     }
 }
 
@@ -59,28 +56,32 @@ void endGame(){
         XGM_startPlayPCM(SFX_DIE, 1, SOUND_PCM_CH2);
         showText(msg_reset);
         game_on = FALSE;
+        score = 0;
     }
+    playState();
 }
 
 void myJoyHandler( u16 joy, u16 changed, u16 state){
     if(joy == JOY_1){
         //Start the game or paused if START is pressed 
-        if(state & BUTTON_START){
-            if(game_on == FALSE){
-                startGame();
-                VDP_clearTextAreaBG(BG_A, 0, 0, 32, 24);
-                playState();
-            } else if(game_on == TRUE){
-                game_on = FALSE;
+        if(game_on == TRUE){
+            if(state & BUTTON_START){
                 pauseGame();
             }
-        }
-        if( state & (BUTTON_A | BUTTON_UP) ){
-            if(jumping == FALSE){
-                jumping = TRUE;
-                player.vel_y = FIX16(-4);
-                //SPR_setAnim(player.sprite, ANIM_JUMP);
-                XGM_startPlayPCM(SFX_JUMP, 1, SOUND_PCM_CH2);
+            if( state & (BUTTON_A | BUTTON_UP) ){
+                if(jumping == FALSE){
+                    jumping = TRUE;
+                    player.vel_y = FIX16(-4);
+                    //SPR_setAnim(player.sprite, ANIM_JUMP);
+                    XGM_startPlayPCM(SFX_JUMP, 1, SOUND_PCM_CH2);
+                }
+            }
+        } else {
+            if(state & BUTTON_START){
+                startGame();
+                if(onTitle == TRUE){
+                    playState();
+                }
             }
         }
     }

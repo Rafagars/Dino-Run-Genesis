@@ -10,6 +10,8 @@
 #define SFX_JUMP 64
 #define SFX_DIE  65
 
+extern bool onTitle;
+
 extern const int scrollspeed;
 
 extern const int floor_height;
